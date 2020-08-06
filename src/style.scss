@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+body {
+  font-family: 'Sriracha', cursive;
+  // background-image: url('https://www.flowstate.co/wp-content/uploads/2019/02/clouds-flowing-over-lake-mountains-nature-animated-gif.gif');
+  // background-image: url('https://thumbs.gfycat.com/AmazingSnarlingAfricanmolesnake-size_restricted.gif');
+  // background-image: url('https://media1.tenor.com/images/aeb4e065f624206ed6c8d43669cf91ef/tenor.gif?itemid=5076995');
+  // background-image: url('https://media1.giphy.com/media/KHh7jLrG6gIXBTnxsp/giphy.gif');
+  // background-image: url('https://i.gifer.com/7DE.gif');
+  background-image: url('https://img.itch.zone/aW1nLzk4Nzg5Ni5naWY=/original/V5VZ3o.gif');
+  // background-image: url('https://img.itch.zone/aW1nLzk4Nzg5My5naWY=/original/1S6y3o.gif');
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 48px;
+}
+
+.content-container {
+  text-align: center;
+}
+
+.content {
+  margin: 0 auto;
+  width: 90vw;
+  background-color:rgba(43, 41, 41, 0.3)
+}
