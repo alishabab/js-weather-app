@@ -24,12 +24,59 @@ body {
   font-size: 48px;
 }
 
+.input,
+.btn {
+  padding: 0.3rem;
+  border-radius: 5px;
+  font-family: 'Sriracha', cursive;
+}
+
+.input:focus {
+  background-color: skyblue;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: skyblue;
+}
+
+.content {
+  margin: 1.5rem auto;
+  width: 90vw;
+  background-color: rgba(43, 41, 41, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .content-container {
   text-align: center;
 }
 
-.content {
-  margin: 0 auto;
-  width: 90vw;
-  background-color:rgba(43, 41, 41, 0.3)
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.animate {
+  animation: myframe 2s ease-in-out 0s 1;
+}
+
+@keyframes myframe {
+  0% {
+    width: 20vw;
+  }
+
+  100% {
+    width: 90vw;
+    // transform: rotateX(0deg);
+  }
+}
+
+@media (min-width: 720px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
