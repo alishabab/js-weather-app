@@ -1,13 +1,11 @@
 import './style.scss';
 
-import renderData from './dom';
+import { renderError, renderData } from './dom';
 
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
 const appId = 'a6fffd615dee8a18a1d160f3eead85a3';
 
 const getBtn = document.querySelector('#getBtn');
-
-const weatherDiv = document.querySelector('#weatherDiv');
 
 const getData = async (url) => {
   const response = await fetch(url);
@@ -19,7 +17,7 @@ const getData = async (url) => {
 };
 
 const handleError = (err) => {
-  weatherDiv.textContent = err;
+  renderError(err);
 };
 
 const getWeatherData = async (e) => {
