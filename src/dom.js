@@ -18,6 +18,7 @@ const renderTemp = (ul, btn, temperatureData) => {
 
 const renderData = (weatherData) => {
   const weatherDiv = document.querySelector('#weatherDiv');
+  document.querySelector('.form').reset();
   clearElement(weatherDiv);
   weatherDiv.classList.add('animate');
   const iconDiv = document.createElement('div');
