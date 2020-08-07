@@ -7,29 +7,19 @@ const clearElement = (element) => {
 const renderTemp = (ul, btn, temperatureData) => {
   clearElement(ul);
   const tempText = ['Current Temp', 'Feels Like', 'Min Temp', 'Max Temp'];
-  if (btn.textContent === 'To Farenhite') {
-    btn.textContent = 'To Celsius';
-    tempText.forEach((item, i) => {
-      const li = document.createElement('li');
-      const temp = convertTemp.kelvinToF(temperatureData[i]);
-      li.textContent = `${item} : ${temp}`;
-      ul.appendChild(li);
-    });
-  } else {
-    btn.textContent = 'To Farenhite';
-    tempText.forEach((item, i) => {
-      const li = document.createElement('li');
-      const temp = convertTemp.kelvinToC(temperatureData[i]);
-      li.textContent = `${item} : ${temp}`;
-      ul.appendChild(li);
-    });
-  }
+  tempText.forEach((item, i) => {
+    const li = document.createElement('li');
+    const temp = btn.textContent === 'To Celsius' ? convertTemp.kelvinToC(temperatureData[i]) : convertTemp.kelvinToF(temperatureData[i]);
+    li.textContent = `${item} : ${temp}`;
+    ul.appendChild(li);
+  });
+  btn.textContent = btn.textContent === 'To Celsius' ? 'To Farenhite' : 'To Celsius';
 };
 
 const renderData = (weatherData) => {
   const weatherDiv = document.querySelector('#weatherDiv');
-  weatherDiv.classList.add('animate');
   clearElement(weatherDiv);
+  weatherDiv.classList.add('animate');
   const iconDiv = document.createElement('div');
   const h1 = document.createElement('h1');
   const h2 = document.createElement('h2');
