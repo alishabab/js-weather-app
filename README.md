@@ -23,10 +23,15 @@
 
 
 ## 🧐 About <a name = "about"></a>
-<h3 align="center">In this project I built a weather app in JavaScript. User can enter a city name in the input box to get weather data of that city. <br>It uses data from OpenWeatherMap API and renders it to display. I used async/await to perform asynchronous tasks and fetch api to make get requests.</h3>
+<h4 align="center">In this project I built a weather app in JavaScript. User can enter a city name in the input box to get weather data of that city. App has autocomplete functionality. When a user start typing in input box a list of matched cities is rendered. <br>It uses autocomplete and weather data from  <a href="https://www.weatherapi.com/"> WeatherApi </a> and renders it to display.  I used async/await to perform asynchronous tasks and fetch api to make async get requests.</h4>
 <p align="center">
   <a href="" rel="noopener">
- <img src="./screenshot.PNG" alt="Project Screenshot"></a>
+ <img src="./screenshot_1.PNG" alt="Project Screenshot"></a>
+</p>
+
+<p align="center">
+  <a href="" rel="noopener">
+ <img src="./screenshot_2.PNG" alt="Project Screenshot"></a>
 </p>
 
 ---
@@ -75,10 +80,9 @@ Give a ⭐️ if you like this project!
 
 ## 👊 Acknowledgments
 
-[The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/weather-app)
+[WeatherApi](https://www.weatherapi.com/)  
+[The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/weather-app)  
 [Microverse](https://microverse.org)
-[OpenWeatherMap](https://openweathermap.org)
-
 
 
 ## 📝 License
