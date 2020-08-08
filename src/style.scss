@@ -27,6 +27,7 @@ body {
 
 .input,
 .btn {
+  outline: none;
   padding: 0.3rem;
   border-radius: 5px;
   font-family: 'Sriracha', cursive;
@@ -62,6 +63,25 @@ body {
 
 .animate {
   animation: myframe 2s ease-in-out 0s 1;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: greenyellow;
+}
+
+.footer-link:hover {
+  color: orangered;
 }
 // autocomplete
 
