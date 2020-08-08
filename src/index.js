@@ -40,7 +40,7 @@ const getAutoCompleteData = async () => {
     const autoCompleteData = await getData(`${baseUrl}/search.json?key=${appId}&q=${query}`);
     renderAutoComplete(autoCompleteData);
   } catch (err) {
-    renderError(err);
+    handleError(err);
   }
 };
 

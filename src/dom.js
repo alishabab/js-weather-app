@@ -36,8 +36,13 @@ const addActive = (x) => {
   return true;
 };
 
-const renderTemp = (ul, btn, temperatureData) => {
-  clearElement(ul);
+const renderTemp = (tempDiv, btn, temperatureData) => {
+  clearElement(tempDiv);
+  const ul = document.createElement('ul');
+  tempDiv.setAttribute('class', 'pos-relative');
+  const span = document.createElement('span');
+  span.setAttribute('class', 'temp-unit');
+  span.textContent = btn.textContent === 'To Celsius' ? '°C' : '°F';
   const tempText = ['Current Temp', 'Feels Like', 'Min Temp', 'Max Temp'];
   tempText.forEach((item, i) => {
     const li = document.createElement('li');
@@ -45,7 +50,9 @@ const renderTemp = (ul, btn, temperatureData) => {
     li.textContent = `${item} : ${temp}`;
     ul.appendChild(li);
   });
-  btn.textContent = btn.textContent === 'To Celsius' ? 'To Farenhite' : 'To Celsius';
+  tempDiv.appendChild(span);
+  tempDiv.appendChild(ul);
+  btn.textContent = btn.textContent === 'To Celsius' ? 'To Fahrenheit' : 'To Celsius';
 };
 
 const renderData = (weatherData) => {
@@ -53,17 +60,18 @@ const renderData = (weatherData) => {
   clearElement(weatherDiv);
   weatherDiv.classList.add('animate');
   const iconDiv = document.createElement('div');
+  const tempDiv = document.createElement('div');
   const h1 = document.createElement('h1');
   const h2 = document.createElement('h2');
   const img = document.createElement('img');
-  const ul = document.createElement('ul');
+  // const ul = document.createElement('ul');
   const btn = document.createElement('button');
   btn.setAttribute('class', 'btn');
   btn.textContent = 'To Celsius';
   // eslint-disable-next-line max-len
   const temperatureData = [weatherData.current.temp_c, weatherData.current.feelslike_c, weatherData.forecast.forecastday[0].day.mintemp_c, weatherData.forecast.forecastday[0].day.maxtemp_c];
-  renderTemp(ul, btn, temperatureData);
-  btn.addEventListener('click', () => renderTemp(ul, btn, temperatureData));
+  renderTemp(tempDiv, btn, temperatureData);
+  btn.addEventListener('click', () => renderTemp(tempDiv, btn, temperatureData));
   iconDiv.setAttribute('class', 'icon');
   img.src = `https://${weatherData.current.condition.icon}`;
   h1.textContent = `${weatherData.location.name}, ${weatherData.location.region}`;
@@ -72,7 +80,7 @@ const renderData = (weatherData) => {
   iconDiv.appendChild(img);
   weatherDiv.appendChild(iconDiv);
   weatherDiv.appendChild(h2);
-  weatherDiv.appendChild(ul);
+  weatherDiv.appendChild(tempDiv);
   weatherDiv.appendChild(btn);
   weatherDiv.addEventListener('animationend', () => {
     weatherDiv.classList.remove('animate');
