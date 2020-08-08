@@ -9,8 +9,10 @@
 <body>
 <div class="content-container">
   <h1><a href="#" class="logo">Weather App</a></h1>
-  <form class="form">
-    <input type="text" id="city" class="input" placeholder="City" required>
+  <form class="form" autocomplete="off">
+    <div class="autocomplete">
+      <input type="text" id="city" name="city" class="input" placeholder="City" required>
+    </div>
     <input type="submit" value="Get Weather" id="getBtn" class="btn">
   </form>
   <div id="weatherDiv" class="content">
