@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  font-family: 'Sriracha', cursive;
+  background-image: url('https://img.itch.zone/aW1nLzk4Nzg5Ni5naWY=/original/V5VZ3o.gif');
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+.logo {
+  display: inline-block;
+  padding-bottom: 30px;
+  text-decoration: none;
+  font-size: 48px;
+  color: rgb(73, 116, 10);
+}
+
+.input {
+  width: 300px;
+}
+
+.input,
+.btn {
+  outline: none;
+  padding: 0.3rem;
+  border-radius: 5px;
+  font-family: 'Sriracha', cursive;
+  margin: 10px;
+}
+
+.input:focus {
+  background-color: skyblue;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: skyblue;
+}
+
+.content {
+  margin: 1.5rem auto;
+  width: 90vw;
+  background-color: rgba(43, 41, 41, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-container {
+  text-align: center;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.animate {
+  animation: myframe 2s ease-in-out 0s 1;
+}
+
+.footer {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 5px;
+  right: 10px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: greenyellow;
+}
+
+.footer-link:hover {
+  color: orangered;
+}
+// autocomplete
+
+.autocomplete {
+  width: 300px;
+  position: relative;
+  display: inline-block;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.autocomplete-items div:hover {
+  background-color: #e9e9e9;
+}
+
+.autocomplete-active {
+  background-color: dodgerblue !important;
+  color: #fff;
+}
+
+@keyframes myframe {
+  0% {
+    width: 20vw;
+  }
+
+  100% {
+    width: 90vw;
+  }
+}
+
+@media (min-width: 720px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
