@@ -1,6 +1,8 @@
 import convertTemp from './convertTemp';
 
 const weatherDiv = document.querySelector('#weatherDiv');
+const inp = document.querySelector('#city');
+let currentFocus;
 
 const clearElement = (element) => {
   element.innerHTML = '';
@@ -10,12 +12,36 @@ const renderError = (err) => {
   weatherDiv.textContent = err;
 };
 
+const closeAllLists = (elmnt) => {
+  const x = document.querySelectorAll('.autocomplete-items');
+  for (let i = 0; i < x.length; i += 1) {
+    if (elmnt !== x[i] && elmnt !== inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+};
+
+const removeActive = (x) => {
+  for (let i = 0; i < x.length; i += 1) {
+    x[i].classList.remove('autocomplete-active');
+  }
+};
+
+const addActive = (x) => {
+  if (!x) return false;
+  removeActive(x);
+  if (currentFocus >= x.length) currentFocus = 0;
+  if (currentFocus < 0) currentFocus = (x.length - 1);
+  x[currentFocus].classList.add('autocomplete-active');
+  return true;
+};
+
 const renderTemp = (ul, btn, temperatureData) => {
   clearElement(ul);
   const tempText = ['Current Temp', 'Feels Like', 'Min Temp', 'Max Temp'];
   tempText.forEach((item, i) => {
     const li = document.createElement('li');
-    const temp = btn.textContent === 'To Celsius' ? convertTemp.kelvinToC(temperatureData[i]) : convertTemp.kelvinToF(temperatureData[i]);
+    const temp = btn.textContent === 'To Celsius' ? temperatureData[i] : convertTemp.celsiusToF(temperatureData[i]);
     li.textContent = `${item} : ${temp}`;
     ul.appendChild(li);
   });
@@ -34,13 +60,14 @@ const renderData = (weatherData) => {
   const btn = document.createElement('button');
   btn.setAttribute('class', 'btn');
   btn.textContent = 'To Celsius';
-  const temperatureData = Object.values(weatherData.main);
+  // eslint-disable-next-line max-len
+  const temperatureData = [weatherData.current.temp_c, weatherData.current.feelslike_c, weatherData.forecast.forecastday[0].day.mintemp_c, weatherData.forecast.forecastday[0].day.maxtemp_c];
   renderTemp(ul, btn, temperatureData);
   btn.addEventListener('click', () => renderTemp(ul, btn, temperatureData));
   iconDiv.setAttribute('class', 'icon');
-  img.src = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
-  h1.textContent = `${weatherData.name}, ${weatherData.sys.country}`;
-  h2.textContent = weatherData.weather[0].description;
+  img.src = `https://${weatherData.current.condition.icon}`;
+  h1.textContent = `${weatherData.location.name}, ${weatherData.location.region}`;
+  h2.textContent = weatherData.current.condition.text;
   iconDiv.appendChild(h1);
   iconDiv.appendChild(img);
   weatherDiv.appendChild(iconDiv);
@@ -52,4 +79,49 @@ const renderData = (weatherData) => {
   });
 };
 
-export { renderError, renderData };
+const renderAutoComplete = (autoCompleteData) => {
+  if (autoCompleteData.length < 1) {
+    closeAllLists();
+    return;
+  }
+  closeAllLists();
+  currentFocus = -1;
+  const arr = autoCompleteData;
+  const a = document.createElement('DIV');
+  a.setAttribute('id', `${inp.id}autocomplete-list`);
+  a.setAttribute('class', 'autocomplete-items');
+  inp.parentNode.appendChild(a);
+  for (let i = 0; i < 5; i += 1) {
+    const b = document.createElement('DIV');
+    b.innerHTML = arr[i].name;
+    b.innerHTML += `<input type='hidden' value='${arr[i].name}'>`;
+    b.addEventListener('click', () => {
+      inp.value = b.getElementsByTagName('input')[0].value;
+      closeAllLists();
+    });
+    a.appendChild(b);
+  }
+
+  inp.addEventListener('keydown', (e) => {
+    let x = document.getElementById(`${inp.id}autocomplete-list`);
+    if (x) x = x.getElementsByTagName('div');
+    if (e.keyCode === 40) {
+      currentFocus += 1;
+      addActive(x);
+    } else if (e.keyCode === 38) {
+      currentFocus -= 1;
+      addActive(x);
+    } else if (e.keyCode === 13) {
+      e.preventDefault();
+      if (currentFocus > -1) {
+        if (x) x[currentFocus].click();
+      }
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    closeAllLists(e.target);
+  });
+};
+
+export { renderError, renderData, renderAutoComplete };
