@@ -45,7 +45,7 @@
 
 ## 🔴 Live Demo
 
-[Live Demo](http://raw.githack.com/alishabab/js-weather-app/weather-feature/dist/index.html)
+[Live Demo](https://alishabab.github.io/js-weather-app/)
 
 ### 🛠 Installing <a name = "installing"></a>
 
