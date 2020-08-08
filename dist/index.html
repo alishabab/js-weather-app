@@ -7,24 +7,25 @@
   <title>Weather App</title>
 </head>
 <body>
-<div class="content-container">
-  <h1><a href="#" class="logo">Weather App</a></h1>
-  <form class="form" autocomplete="off">
-    <div class="autocomplete">
-      <input type="text" id="city" name="city" class="input" placeholder="City" required>
+  <main>
+    <div class="content-container">
+      <h1><a href="#" class="logo">Weather App</a></h1>
+      <form class="form" autocomplete="off">
+        <div class="autocomplete">
+          <input type="text" id="city" name="city" class="input" placeholder="City" required>
+        </div>
+        <input type="submit" value="Get Weather" id="getBtn" class="btn">
+      </form>
+      <div id="weatherDiv" class="content">
+      </div>
     </div>
-    <input type="submit" value="Get Weather" id="getBtn" class="btn">
-  </form>
-  <div id="weatherDiv" class="content">
-  </div>
-</div>
+</main>
 <footer class="footer">
   <p>Designed By <br> <a href="https://alishabab.github.io" class="footer-link">Shabab Ali</a></p>
   <div>
     <p>Powered by</p>
     <a href="https://www.weatherapi.com/" title="Free Weather API"><img src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0"></a>
   </div>
-  
 </footer>
 </body>
 </html>

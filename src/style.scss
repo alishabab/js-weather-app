@@ -67,12 +67,12 @@ body {
 }
 
 .footer {
+  position: fixed;
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: fixed;
-  bottom: 10px;
+  bottom: 5px;
   right: 10px;
 }
 
