@@ -64,7 +64,6 @@ const renderData = (weatherData) => {
   const h1 = document.createElement('h1');
   const h2 = document.createElement('h2');
   const img = document.createElement('img');
-  // const ul = document.createElement('ul');
   const btn = document.createElement('button');
   btn.setAttribute('class', 'btn');
   btn.textContent = 'To Celsius';
